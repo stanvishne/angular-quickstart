@@ -8,7 +8,8 @@ import Hero from '../../models/Hero';
 
 @Component({
 	selector: 'hero-detail',
-	templateUrl: './hero-detail.component.html'
+	templateUrl: './hero-detail.component.html',
+	styleUrls: ['./hero-detail.component.css']
 })
 
 export default class HeroDetailComponent implements OnInit {
@@ -28,5 +29,10 @@ export default class HeroDetailComponent implements OnInit {
 		this.location.back();
 	}
 	
+	save(): void {
+		this.heroService.update(this.hero)
+			.then(() => this.goBack());
+	}
+
 	@Input() hero: Hero
 }
